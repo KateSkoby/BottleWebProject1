@@ -1,5 +1,6 @@
 % rebase('layout.tpl', title='Home Page', year=year)
 
+
 <div class="jumbotron">
     <img src="static\images\logo_nav.png">
     <p></p>
