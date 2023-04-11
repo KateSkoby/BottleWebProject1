@@ -12,15 +12,69 @@ def my_form():
     mailStr = "%s" % mail
 
     if len("%s" % question) < 1:
-        return "Enter your question"
+        return '''
+                <dialog id="no_message" open>    
+                    Enter your question
+                </dialog>
+                <h3> Ask a Question </h3>
+                <form action="/home" method="post">
+                    <p><textarea style="resize:none" rows="2" cols="50" name="QUEST" placeholder="Your question"></textarea></p> 
+                    <p><input type="text" size="50" name"USERNAME" placeholder="Your name"></p>
+                    <p><input type="text" size="50" name="ADRESS" placeholder="Your email"></p>
+                    <p><input type="submit" value="Send" class="btn btn-default"></p>
+                </form>
+               '''
     if "%s" % name == None:
-        return "Enter your name"
+        return '''
+                <dialog id="no_message" open>    
+                    Enter your name
+                </dialog>
+                <h3> Ask a Question </h3>
+                <form action="/home" method="post">
+                    <p><textarea style="resize:none" rows="2" cols="50" name="QUEST" placeholder="Your question"></textarea></p> 
+                    <p><input type="text" size="50" name"USERNAME" placeholder="Your name"></p>
+                    <p><input type="text" size="50" name="ADRESS" placeholder="Your email"></p>
+                    <p><input type="submit" value="Send" class="btn btn-default"></p>
+                </form>
+               '''
     if len("%s" % mail) < 1:
-        return "Enter your e-mail"
-
+        return '''
+                <dialog id="no_message" open>    
+                    Enter your e-mail
+                </dialog>
+                <h3> Ask a Question </h3>
+                <form action="/home" method="post">
+                    <p><textarea style="resize:none" rows="2" cols="50" name="QUEST" placeholder="Your question"></textarea></p> 
+                    <p><input type="text" size="50" name"USERNAME" placeholder="Your name"></p>
+                    <p><input type="text" size="50" name="ADRESS" placeholder="Your email"></p>
+                    <p><input type="submit" value="Send" class="btn btn-default"></p>
+                </form>
+               '''
     regex = re.fullmatch(r'[a-z0-9]{2,25}@[a-z]{2,9}\.(com|ru)',"%s" % mail)
     if len("%s" % name) > 2:
         if regex:
             return "Thanks, " + nameStr + "! The answer will be sent to the mail " + mailStr + " (date: " + str(datetime.date.today()) + ")"
-        return "Incorrect e-mail"
-    return "Short name"
+        return '''
+                <dialog id="no_message" open>    
+                    Incorrect e-mail
+                </dialog>
+                <h3> Ask a Question </h3>
+                <form action="/home" method="post">
+                    <p><textarea style="resize:none" rows="2" cols="50" name="QUEST" placeholder="Your question"></textarea></p> 
+                    <p><input type="text" size="50" name"USERNAME" placeholder="Your name"></p>
+                    <p><input type="text" size="50" name="ADRESS" placeholder="Your email"></p>
+                    <p><input type="submit" value="Send" class="btn btn-default"></p>
+                </form>
+               '''
+    return '''
+            <dialog id="no_message" open>
+                Short name
+            </dialog>
+            <h3> Ask a Question </h3>
+            <form action="/home" method="post">
+                <p><textarea style="resize:none" rows="2" cols="50" name="QUEST" placeholder="Your question"></textarea></p> 
+                <p><input type="text" size="50" name"USERNAME" placeholder="Your name"></p>
+                <p><input type="text" size="50" name="ADRESS" placeholder="Your email"></p>
+                <p><input type="submit" value="Send" class="btn btn-default"></p>
+            </form>
+            '''
