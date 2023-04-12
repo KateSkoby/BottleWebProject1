@@ -13,11 +13,9 @@ def my_form():
 
     if len("%s" % question) < 1:
         return '''
-                <dialog id="no_message" open>    
-                    Enter your question
-                </dialog>
                 <h3> Ask a Question </h3>
                 <form action="/home" method="post">
+                    <small> Enter your question </small>
                     <p><textarea style="resize:none" rows="2" cols="50" name="QUEST" placeholder="Your question"></textarea></p> 
                     <p><input type="text" size="50" name"USERNAME" placeholder="Your name"></p>
                     <p><input type="text" size="50" name="ADRESS" placeholder="Your email"></p>
@@ -39,13 +37,11 @@ def my_form():
                '''
     if len("%s" % mail) < 1:
         return '''
-                <dialog id="no_message" open>    
-                    Enter your e-mail
-                </dialog>
                 <h3> Ask a Question </h3>
                 <form action="/home" method="post">
                     <p><textarea style="resize:none" rows="2" cols="50" name="QUEST" placeholder="Your question"></textarea></p> 
                     <p><input type="text" size="50" name"USERNAME" placeholder="Your name"></p>
+                    <small> Enter your e-mail </small>
                     <p><input type="text" size="50" name="ADRESS" placeholder="Your email"></p>
                     <p><input type="submit" value="Send" class="btn btn-default"></p>
                 </form>
@@ -55,13 +51,11 @@ def my_form():
         if regex:
             return "Thanks, " + nameStr + "! The answer will be sent to the mail " + mailStr + " (date: " + str(datetime.date.today()) + ")"
         return '''
-                <dialog id="no_message" open>    
-                    Incorrect e-mail
-                </dialog>
                 <h3> Ask a Question </h3>
                 <form action="/home" method="post">
                     <p><textarea style="resize:none" rows="2" cols="50" name="QUEST" placeholder="Your question"></textarea></p> 
                     <p><input type="text" size="50" name"USERNAME" placeholder="Your name"></p>
+                    <small> Incorrect e-mail </small>
                     <p><input type="text" size="50" name="ADRESS" placeholder="Your email"></p>
                     <p><input type="submit" value="Send" class="btn btn-default"></p>
                 </form>
