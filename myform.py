@@ -2,6 +2,7 @@ from asyncio.windows_events import NULL
 import datetime
 import re
 from bottle import post, request
+import pdb
 
 @post('/home', method='post')
 def my_form():
@@ -49,6 +50,8 @@ def my_form():
     regex = re.fullmatch(r'[a-z0-9]{2,25}@[a-z]{2,9}\.(com|ru)',"%s" % mail)
     if len("%s" % name) > 2:
         if regex:
+            questions = {mail: question}
+            pdb.set_trace()
             return "Thanks, " + nameStr + "! The answer will be sent to the mail " + mailStr + " (date: " + str(datetime.date.today()) + ")"
         return '''
                 <h3> Ask a Question </h3>
@@ -72,3 +75,4 @@ def my_form():
                 <p><input type="submit" value="Send" class="btn btn-default"></p>
             </form>
             '''
+
