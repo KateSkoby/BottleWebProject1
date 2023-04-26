@@ -1,8 +1,10 @@
+from os.path import exists
 from asyncio.windows_events import NULL
 import datetime
 import re
 from bottle import post, request
 import pdb
+import json
 
 @post('/home', method='post')
 def my_form():
@@ -53,9 +55,21 @@ def my_form():
     regex = re.fullmatch(r'[a-z0-9]{2,25}@[a-z]{2,9}\.(com|ru)', mailStr)
     if len(nameStr) > 2:
         if regex:
-            questions = {nameStr: questionStr}
-            print(questions)
-            pdb.set_trace()
+            questions = {}
+            #print(questions)
+            #pdb.set_trace()
+            if exists('data.txt'):
+                with open('data.txt', 'r') as read_json:
+                    questions = json.load(read_json)
+                with open('data.txt', 'w') as write_json:
+                    if mail in questions:
+                        if question in questions[mail]:
+                            i = 0
+                        else:
+                            questions[mail].append(question) 
+                    else:
+                        questions[mail] = [name, question]
+                    json.dump(questions, write_json)
             return "Thanks, " + nameStr + "! The answer will be sent to the mail " + mailStr + " (date: " + str(datetime.date.today()) + ")"
         return '''
                 <h3> Ask a Question </h3>
