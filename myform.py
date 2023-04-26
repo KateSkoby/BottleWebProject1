@@ -58,12 +58,19 @@ def my_form():
             questions = {}
             #print(questions)
             #pdb.set_trace()
+            #{"katesko@yandex.ru": ["Kate", "hello"]}
             if exists('data.txt'):
                 with open('data.txt', 'r') as read_json:
                     questions = json.load(read_json)
                 with open('data.txt', 'w') as write_json:
                     if mail in questions:
-                        if question in questions[mail]:
+                        if name not in questions[mail]:
+                            questions[mail][0] = name;
+                            if question in questions[mail]:
+                                i = 0
+                            else:
+                                questions[mail].append(question) 
+                        elif question in questions[mail]:
                             i = 0
                         else:
                             questions[mail].append(question) 
