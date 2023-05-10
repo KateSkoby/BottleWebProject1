@@ -1,1 +1,1 @@
-{"katesko@yandex.ru": ["Kate", "how are you?", "hello?"], "pelbek1999@gmail.com": ["Masha", "hello my friend?"]}
+{"katesko@yandex.ru": ["Kate", "how are you?", "hello?"], "pelbek1999@gmail.com": ["Kate", "hello my friend?", "hello?"]}

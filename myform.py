@@ -101,3 +101,10 @@ def my_form():
             </form>
             '''
 
+def isCorrectEmail(email: str):
+    regex = re.fullmatch(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", email)
+    if regex:
+        return True
+    else:
+        return False
+
